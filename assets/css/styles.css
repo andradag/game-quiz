@@ -1,12 +1,11 @@
-
 :root {
-    /* CSS HEX */
-    --teal: #008080;
-    --maximum-red: #d62828ff;
-    --orange: #f77f00ff;
-    --oliver: #808000;
-    --silver: #C0C0C0;
-  }
+  /* CSS HEX */
+  --teal: #008080;
+  --maximum-red: #d62828ff;
+  --orange: #f77f00ff;
+  --oliver: #808000;
+  --silver: #c0c0c0;
+}
 
 * {
   box-sizing: border-box;
@@ -40,9 +39,48 @@ body {
   color: var(--silver);
 }
 
+.main {
+  font-size: 1rem;
+}
+
+.start-container {
+  text-align: center;
+  margin: 0 2rem;
+  padding: 4rem;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 400;
+  padding-bottom: 1rem;
+}
+
+.btn {
+  padding-top: 2rem;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  letter-spacing: 0.2rem;
+  font-weight: 600;
+  background-color: var(--silver);
+  color: #000;
+}
+
+.btn:hover {
+  background-color: var(--oliver);
+  cursor: pointer;
+  color: #fff;
+}
+
 @media screen and (max-width: 576px) {
   .nav-container {
     flex-direction: column;
     align-items: center;
   }
-}a
+
+  .start-container {
+    margin: 0 1rem;
+    padding: 2rem;
+  }
+}
