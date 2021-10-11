@@ -45,8 +45,14 @@ body {
 
 .start-container {
   text-align: center;
+}
+.container {
   margin: 0 2rem;
   padding: 4rem;
+}
+
+.start-container {
+  text-align: center;
 }
 
 .title {
@@ -71,6 +77,39 @@ body {
   background-color: var(--oliver);
   cursor: pointer;
   color: #fff;
+}
+
+.question-container {
+  text-align: center;
+}
+
+.question {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 4rem;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 2rem;
+}
+
+.option-item {
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: var(--teal);
+  color: #fff;
+  border: none;
+  border-radius: 0.2rem;
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+}
+
+.option-item:hover {
+  background-color: var(--oliver);
+  cursor: pointer;
+  color: #000;
 }
 
 @media screen and (max-width: 576px) {
