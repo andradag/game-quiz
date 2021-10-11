@@ -156,6 +156,11 @@ body {
   font-size: 1rem;
   width: 75%;
 }
+.game-over {
+  text-align: center;
+  background-color: var(--teal);
+  color: var(--silver);
+}
 
 @media screen and (max-width: 576px) {
   .nav-container {
