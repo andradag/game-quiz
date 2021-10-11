@@ -40,6 +40,61 @@ const constructOptions = function (options) {
 
   return optionsContainer;
 };
+const constructAlert = function (className, text) {
+  // construct div
+  const alertDiv = document.createElement("div");
+  alertDiv.setAttribute("class", className);
+  alertDiv.textContent = text;
+
+  return alertDiv;
+};
+
+const renderSuccessAlert = function () {
+  // construct alert
+  const alert = constructAlert(
+    "container answer-alert answer-alert-success",
+    "That's right !!"
+  );
+
+  // append the alert to the document
+  document.getElementById("alert-container").appendChild(alert);
+
+  // declare a timeout function (to remove the element)
+  const afterWait = function () {
+    // remove alert
+    alert.remove();
+
+    // kill timeout
+    clearTimeout(delay);
+  };
+
+  // start a timeout (delay)
+  const delay = setTimeout(afterWait, 1000);
+};
+
+const renderDangerAlert = function () {
+  // construct alert
+  const alert = constructAlert(
+    "container answer-alert answer-alert-danger",
+    "WRONG!!"
+  );
+
+  // append the alert to the document
+  document.getElementById("alert-container").appendChild(alert);
+
+  // declare a timeout function (to remove the element)
+  const afterWait = function () {
+    // remove alert
+    alert.remove();
+
+    // kill timeout
+    clearTimeout(delay);
+  };
+
+  // start a timeout (delay)
+  const delay = setTimeout(afterWait, 1000);
+};
+
 const verifyAnswer = function (event) {
   const target = event.target;
   const currentTarget = event.currentTarget;
