@@ -19,6 +19,7 @@ const kArtistsQuestions = [
 let count = kArtistsQuestions.length * 5;
 // let count = 5;
 let currentQuestionIndex = 0;
+
 const constructOptions = function (options) {
   const optionsContainer = document.createElement("div");
   optionsContainer.setAttribute("class", "options-container");
@@ -40,6 +41,7 @@ const constructOptions = function (options) {
 
   return optionsContainer;
 };
+
 const constructAlert = function (className, text) {
   // construct div
   const alertDiv = document.createElement("div");
@@ -113,8 +115,10 @@ const verifyAnswer = function (event) {
     if (userOption !== correctOption) {
       // time penalty deduct 5 seconds
       count -= 5;
+      renderDangerAlert();
     } else {
       console.log("CORRECT");
+      renderSuccessAlert();
     }
 
     // go to next question
