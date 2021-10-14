@@ -125,7 +125,7 @@ const verifyAnswer = function (event) {
     currentQuestionIndex += 1;
 
     // check if last question
-    if (currentQuestionIndex < movieQuestions.length) {
+    if (currentQuestionIndex < kArtistsQuestions.length) {
       // render the next question
       removeQuestionContainer();
       renderQuestionContainer();
