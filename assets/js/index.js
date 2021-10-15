@@ -162,6 +162,15 @@ const renderDangerAlert = function () {
   const delay = setTimeout(afterWait, 1000);
 };
 
+const renderScoreForm = function () {
+  // remove the last question
+  removeQuestionContainer();
+  // construct score form
+  const form = constructForm();
+  // append form to document
+  document.getElementById("main-container").append(form);
+};
+
 const verifyAnswer = function (event) {
   const target = event.target;
   const currentTarget = event.currentTarget;
@@ -174,18 +183,24 @@ const verifyAnswer = function (event) {
     // get the correct option for the question
     const correctOption = currentTarget.getAttribute("data-correct");
 
-    console.log(userOption, correctOption);
-
     // verify the 2
     if (userOption !== correctOption) {
       // time penalty deduct 5 seconds
       count -= 5;
-      document.getElementById("countdown").textContent = count;
       renderDangerAlert();
     } else {
       console.log("CORRECT");
       renderSuccessAlert();
-    }
+      if (count > 0) {
+        document.getElementById("countdown").textContent = count;
+      } else {
+        document.getElementById("countdown").textContent = 0;
+      }
+    
+       } else {
+         console.log("CORRECT");
+        renderSuccessAlert();
+       }
 
     // go to next question
     currentQuestionIndex += 1;
@@ -196,7 +211,12 @@ const verifyAnswer = function (event) {
       removeQuestionContainer();
       renderQuestionContainer();
     } else {
-      console.log("render score form");
+      if (count > 0) {
+        renderScoreForm();
+      } else {
+        removeQuestionContainer();
+        renderGameOver();
+      }
     }
   }
 };
