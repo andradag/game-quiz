@@ -198,7 +198,6 @@ const verifyAnswer = function (event) {
       }
     
        } else {
-         console.log("CORRECT");
         renderSuccessAlert();
        }
 
