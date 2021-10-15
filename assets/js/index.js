@@ -115,6 +115,7 @@ const verifyAnswer = function (event) {
     if (userOption !== correctOption) {
       // time penalty deduct 5 seconds
       count -= 5;
+      document.getElementById("countdown").textContent = count;
       renderDangerAlert();
     } else {
       console.log("CORRECT");
@@ -184,18 +185,30 @@ const removeQuestionContainer = function () {
   questionContainer.remove();
 };
 
+const renderGameOver = function () {
+  const divContainer = document.createElement("div");
+  divContainer.setAttribute("class", "container game-over");
+
+  const h2Element = document.createElement("h2");
+  h2Element.textContent = "GAME OVER";
+
+  divContainer.append(h2Element);
+
+  document.getElementById("main-container").append(divContainer);
+};
+
 const startTimer = function () {
   // declare the timer tick function
   const timerTick = function () {
-    // check if the countdown has reached 0
-    if (count >= 0) {
-      // render the countdown time in the document
-      document.getElementById("countdown").textContent = count;
-      count -= 1;
-    } else {
-      // render game over container
-      console.log("GAME OVER");
+    if (currentQuestionIndex >= kArtistsQuestions.length) {
       clearInterval(timer);
+    } else if (count < 0) {
+      clearInterval(timer);
+      removeQuestionsContainer();
+      renderGameOver();
+    } else {
+      count -= 1;
+      document.getElementById("countdown").textContent = count;
     }
   };
 

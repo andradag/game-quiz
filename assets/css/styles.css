@@ -53,8 +53,8 @@ body {
   text-align: center;
 }
 .container {
-  margin: 0 2rem;
-  padding: 4rem;
+  margin: 4rem 1rem;
+  padding: 2rem;
 }
 
 .start-container {
@@ -160,6 +160,7 @@ body {
   text-align: center;
   background-color: var(--teal);
   color: var(--silver);
+  margin-top: 4rem;
 }
 
 @media screen and (max-width: 576px) {
