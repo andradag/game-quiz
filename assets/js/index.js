@@ -188,18 +188,14 @@ const verifyAnswer = function (event) {
       // time penalty deduct 5 seconds
       count -= 5;
       renderDangerAlert();
-    } else {
-      console.log("CORRECT");
-      renderSuccessAlert();
       if (count > 0) {
         document.getElementById("countdown").textContent = count;
       } else {
         document.getElementById("countdown").textContent = 0;
       }
-    
-       } else {
-        renderSuccessAlert();
-       }
+    } else {
+      renderSuccessAlert();
+    }
 
     // go to next question
     currentQuestionIndex += 1;
