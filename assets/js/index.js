@@ -51,6 +51,71 @@ const constructAlert = function (className, text) {
   return alertDiv;
 };
 
+const getFromLocalStorage = function (key, defaultValue) {
+  const localStorageData = JSON.parse(localStorage.getItem(key));
+
+  if (!localStorageData) {
+    return defaultValue;
+  } else {
+    return localStorageData;
+  }
+};
+
+const storeScore = function () {
+  // get count value
+  const score = count;
+
+  // get user initials from input
+  const initials = document.getElementById("user-initials").value;
+
+  // construct score object
+  const scoreObject = {
+    score: score,
+    initials: initials,
+  };
+
+  // get from LS before inserting object
+  const highscores = getFromLocalStorage("highscores", []);
+
+  // insert the score object
+  highscores.push(scoreObject);
+
+  // write back to LS
+  localStorage.setItem("highscores", JSON.stringify(highscores));
+};
+
+const constructForm = function () {
+  const divContainer = document.createElement("div");
+  divContainer.setAttribute("class", "container score-form");
+  const form = document.createElement("form");
+  const h2Element = document.createElement("h2");
+  h2Element.setAttribute("class", "question");
+  h2Element.textContent = "Your score is " + count;
+  const formContainer = document.createElement("div");
+  formContainer.setAttribute("class", "form-container");
+  const formInputDiv = document.createElement("div");
+  formInputDiv.setAttribute("class", "form-item");
+
+  const formInput = document.createElement("input");
+  formInput.setAttribute("placeholder", "Enter your initials");
+  formInput.setAttribute("id", "user-initials");
+
+  const formButtonDiv = document.createElement("div");
+  formButtonDiv.setAttribute("class", "form-item");
+  const formButton = document.createElement("button");
+  formButton.setAttribute("class", "btn");
+  formButton.textContent = "Submit";
+  formInputDiv.append(formInput);
+  formButtonDiv.append(formButton);
+  formContainer.append(formInputDiv, formButtonDiv);
+  form.append(h2Element, formContainer);
+  divContainer.append(form);
+
+  form.addEventListener("submit", storeScore);
+
+  return divContainer;
+};
+
 const renderSuccessAlert = function () {
   // construct alert
   const alert = constructAlert(
@@ -215,9 +280,19 @@ const startTimer = function () {
   // declare the timer
   const timer = setInterval(timerTick, 1000);
 };
+const initialLocalStorage = function () {
+  const dataFromLS = JSON.parse(localStorage.getItem("highscores"));
+
+  if (!dataFromLS) {
+    localStorage.setItem("highscores", JSON.stringify([]));
+  }
+};
 
 // function to execute when start button is called
 const startQuiz = function () {
+  // initialise local storage
+  initialLocalStorage();
+
   // remove start container
   removeStartContainer();
 
