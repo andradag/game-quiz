@@ -87,12 +87,16 @@ const storeScore = function () {
 const constructForm = function () {
   const divContainer = document.createElement("div");
   divContainer.setAttribute("class", "container score-form");
+
   const form = document.createElement("form");
+
   const h2Element = document.createElement("h2");
   h2Element.setAttribute("class", "question");
   h2Element.textContent = "Your score is " + count;
+
   const formContainer = document.createElement("div");
   formContainer.setAttribute("class", "form-container");
+
   const formInputDiv = document.createElement("div");
   formInputDiv.setAttribute("class", "form-item");
 
